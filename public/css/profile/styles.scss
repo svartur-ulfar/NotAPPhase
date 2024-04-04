@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  //   background-color: #fafafa;
+  font-family: "Roboto", sans-serif;
+}
+
+.row {
+  margin-top: 60px !important;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 5vw);
+  grid-gap: 15px;
+}
+
+.container {
+  padding-top: 130px;
+
+  .profile-img {
+    margin-right: 50px;
+    border-radius: 9999px;
+    width: 150px;
+    height: 150px;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+.button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+  .settings-icon{
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  h1 {
+    color: #374151;
+    font-size: 50px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .statistics {
+
+    padding-bottom: 70px;
+    h3 {
+      color: #6b7280;
+      font-size: 18px;
+      margin: 15px 80px 25px 0;
+
+      span {
+        color: #374151;
+      }
+    }
+    p{
+      max-width: 370px;
+      color: #6b7280;
+    }
+
+    .statistics-des{
+      display: flex;
+      text-align: center;
+    }
+  }
+}
