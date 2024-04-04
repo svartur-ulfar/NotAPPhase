@@ -1,0 +1,70 @@
+<!-- forEach on Db to gen files -->
+<% userPhoto.forEach((feed) => { %>
+  <!-- id for post to scroll auto back to the post after refresh -->
+<div class="col-md-8 custom-grid" id="<%= feed._id %>">
+  <div class="content">
+    <div class="mini-navbar">
+      <p>
+        <img src="https://proiect-licenta.s3.eu-central-1.amazonaws.com/image_uploud_Profile-_id_<%=feed.id %>" alt="profile-img" /><%=
+        feed.profile_name %>
+      </p>
+      <p class="date"><%= feed.date.slice(4, 16) %></p>
+    </div>
+<!-- img -->
+    <img class="photo" src="<%= feed.s3_file %>" alt="Insagram Photo" />
+    
+    <div class="content-feed">
+<!-- lights from -->
+        <form action="/lights" method="POST">
+
+        <p class="likes">
+
+          <input class="idCheck" type="text" name="idLights" value="<%= feed._id %>">
+          <input type="text" class="lights" value="1">
+          
+          <button type="submit"><img src="/public/images/icons/bolt_black_18dp.svg" alt="lights"
+              style="width: 30px;" /><%= feed.lights %>
+            lights</button>
+          </form>
+            <!-- from for follow -->
+            <form action="/follow" method="POST">
+
+              <input class="fllw-input-none" type="text" name="idFllw" value="<%= feed._id %>">
+
+              <% if(userId != feed.id) { %> 
+                <button id="fllw" class="fllw" type="submit">Follow</button>
+                <% } %> 
+              </form> 
+              
+            </p>
+
+    <p class="description"><b><%= feed.profile_name %></b> <%= feed.des %></</p>
+
+    <div class="comment-box all-comments">
+      <a class="see-more">Show all comments..</a>
+
+      <% feed.comm.forEach(function(comm){ %>
+      <div class="user-comment-box"><b><%= comm.profile_name %></b>: <%= comm.comm %></div>
+      <% }) %>
+    </div>
+  </div>
+  <div class="comments">
+    <form action="/" method="POST">
+      <input class="idCheck" type="text" name="idCheck" value="<%= feed._id %>">
+      <img src="../public/images/icons/comm.svg" alt="comments" />
+      <input type="text" id="comm" name="comm" placeholder="Add a commnts.." />
+      <button type="submit">Post</button>
+      </p>
+    </form>
+  </div>
+</div>
+</div>
+
+
+<!-- scripts -->
+<script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script async src="/public/js/comm_ext.js"></script>
+
+<% }) %>
